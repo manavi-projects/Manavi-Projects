@@ -13,62 +13,222 @@
 </head>
 
 <body>
-    <!-- Header Section (Copy from index.html) -->
-    <section id="sec-3">
+    <!-- Header Section (Copied from index.html) -->
+    <section id="sec-0">
+        <header class="top">
+            <div class="container">
+                <p>1234-5678-9012</p>
+                <p>support@Construct.com</p>
+                <p>Mon-Sat 9:00-19:00</p>
+                <div class="social">
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-behance"></i></a>
+                    <a href="#"><i class="fa-solid fa-basketball"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><img src="Images/youtube-logotype.png" alt=""></i></a>
+                </div>
+            </div>
+        </header>
+        <header>
+            <div class="hide" id="searchBar">
+                <input type="search" name="searchBox" id="searchBox" placeholder="Type your search here..    Press [Esc] to exist">
+            </div>
+            <div class="container">  
+                <h1>
+                    <span>MANAVI PVT. LTD
+                </h1>
+                <label for="menu"><i class="fas fa-bars"></i></label>
+                <input type="checkbox" id="menu">
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="#">Why Choose Us</a>
+                    <a href="services.html">Our Services</a>
+                    <a href="solutions.html">Solution We Provide</a>
+                    <a href="#">Contact</a>
+                    <i class="fa-solid fa-magnifying-glass" id="search"></i>
+                </nav>
+            </div>
+        </header>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="sec-3" class="py-5">
         <div class="container">
-            <h1 class="text-center mb-5">Choose a Category</h1>
+            <h1 class="text-center mb-5">Solutions We Provide</h1>
+            <p class="text-center mb-4">At Manavi Pvt. Ltd., we offer comprehensive solutions tailored to meet the unique needs of various industries. Our expertise and innovative approach ensure that we deliver excellence in every project.</p>
+            
             <div class="cont">
+                <!-- First Card -->
                 <div class="card border-0 shadow hover-effect">
                     <div class="card-img-wrapper">
                         <img src="Assets/cc1.jpg" class="card-img-top" alt="Industries We Serve">
                         <div class="caption">Industries We Serve</div>
                     </div>
                     <div class="card-body px-4 pt-4">
-                        <!-- <h5 class="card-title mb-3">Industries We Serve</h5> -->
-                        <p class="card-text">As industries rapidly evolve, we help our clients navigate these shifts with cutting-edge solutions and expert guidance. Our comprehensive services span across multiple sectors including:</p>
-                        <ul class="list-unstyled mb-4">
+                        <p class="card-text">As industries rapidly evolve, we help our clients navigate these shifts with cutting-edge solutions and expert guidance.</p>
+                        <ul class="list-unstyled mb-4">t
                             <li><i class="fas fa-check-circle me-2"></i>Manufacturing & Processing</li>
                             <li><i class="fas fa-check-circle me-2"></i>Energy & Utilities</li>
                             <li><i class="fas fa-check-circle me-2"></i>Infrastructure Development</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+                        <div class="collapse" id="industry-collapse">
+                            <div class="collapse-content">
+                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae necessitatibus perspiciatis autem explicabo at officiis voluptatum tempore commodi officia laboriosam ratione, omnis illum ad, odit sequi nobis, iusto rem alias.</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary w-100" data-bs-toggle="collapse" data-bs-target="#industry-collapse" aria-expanded="false" aria-controls="industry-collapse">
+                            <span class="collapse-text-show">Learn More <i class="fas fa-arrow-right ms-2"></i></span>
+                            <span class="collapse-text-hide d-none">Show Less <i class="fas fa-arrow-up ms-2"></i></span>
+                        </button>
                     </div>
                 </div>
 
+                <!-- Second Card -->
                 <div class="card border-0 shadow hover-effect">
                     <div class="card-img-wrapper">
                         <img src="Assets/cc2.jpg" class="card-img-top" alt="Solutions We Provide">
                         <div class="caption">Solutions We Provide</div>
                     </div>
                     <div class="card-body px-4 pt-4">
-                        <!-- <h5 class="card-title mb-3">Solutions We Provide</h5> -->
                         <p class="card-text">We deliver innovative and customized solutions to meet your specific needs. Our expertise includes:</p>
                         <ul class="list-unstyled mb-4">
                             <li><i class="fas fa-check-circle me-2"></i>Engineering Design</li>
                             <li><i class="fas fa-check-circle me-2"></i>Project Management</li>
                             <li><i class="fas fa-check-circle me-2"></i>Technical Consulting</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+                        <div class="collapse" id="solutions-collapse">
+                            <div class="collapse-content">
+                                <h5>Engineering Design</h5>
+                                <p>Our engineering design services combine technical expertise with creative problem-solving for optimal results.</p>
+                                
+                                <h5>Project Management</h5>
+                                <p>We ensure your projects are completed on time, within budget, and to the highest standards.</p>
+                                
+                                <h5>Technical Consulting</h5>
+                                <p>Our technical consulting services provide expert guidance for complex challenges in various industries.</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary w-100" data-bs-toggle="collapse" data-bs-target="#solutions-collapse" aria-expanded="false" aria-controls="solutions-collapse">
+                            <span class="collapse-text-show">Learn More <i class="fas fa-arrow-right ms-2"></i></span>
+                            <span class="collapse-text-hide d-none">Show Less <i class="fas fa-arrow-up ms-2"></i></span>
+                        </button>
                     </div>
                 </div>
 
+                <!-- Third Card -->
                 <div class="card border-0 shadow hover-effect">
                     <div class="card-img-wrapper">
                         <img src="Assets/cc3.jpg" class="card-img-top" alt="Our Services">
                         <div class="caption">Our Services</div>
                     </div>
                     <div class="card-body px-4 pt-4">
-                        <!-- <h5 class="card-title mb-3">Our Services</h5> -->
                         <p class="card-text">We offer comprehensive services to develop effective, sustainable strategies that enable business growth and engineering excellence:</p>
                         <ul class="list-unstyled mb-4">
                             <li><i class="fas fa-check-circle me-2"></i>EPC Solutions</li>
                             <li><i class="fas fa-check-circle me-2"></i>Quality Assurance</li>
                             <li><i class="fas fa-check-circle me-2"></i>Maintenance Support</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+                        <div class="collapse" id="services-collapse">
+                            <div class="collapse-content">
+                                <h5>EPC Solutions</h5>
+                                <p>Our end-to-end Engineering, Procurement, and Construction solutions ensure seamless project execution.</p>
+                                
+                                <h5>Quality Assurance</h5>
+                                <p>We implement rigorous quality assurance processes to ensure excellence in every aspect of our work.</p>
+                                
+                                <h5>Maintenance Support</h5>
+                                <p>Our maintenance support services help maximize the lifespan and performance of your assets.</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary w-100" data-bs-toggle="collapse" data-bs-target="#services-collapse" aria-expanded="false" aria-controls="services-collapse">
+                            <span class="collapse-text-show">Learn More <i class="fas fa-arrow-right ms-2"></i></span>
+                            <span class="collapse-text-hide d-none">Show Less <i class="fas fa-arrow-up ms-2"></i></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Fourth Card -->
+                <div class="card border-0 shadow hover-effect">
+                    <div class="card-img-wrapper">
+                        <img src="Assets/cc1.jpg" class="card-img-top" alt="Digital Solutions">
+                        <div class="caption">Digital Solutions</div>
+                    </div>
+                    <div class="card-body px-4 pt-4">
+                        <p class="card-text">Our digital solutions leverage cutting-edge technology to optimize operations and enhance productivity:</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i class="fas fa-check-circle me-2"></i>Automation Systems</li>
+                            <li><i class="fas fa-check-circle me-2"></i>Data Analytics</li>
+                            <li><i class="fas fa-check-circle me-2"></i>IoT Integration</li>
+                        </ul>
+                        <div class="collapse" id="digital-collapse">
+                            <div class="collapse-content">
+                                <h5>Automation Systems</h5>
+                                <p>We design and implement automation systems that streamline processes and reduce manual intervention.</p>
+                                
+                                <h5>Data Analytics</h5>
+                                <p>Our data analytics solutions help you make informed decisions based on comprehensive insights.</p>
+                                
+                                <h5>IoT Integration</h5>
+                                <p>We integrate IoT technologies to enable real-time monitoring and control of your operations.</p>
+                            </div>
+                        </div>
+                        <button style="color: black;" class="btn btn-primary w-100" data-bs-toggle="collapse" data-bs-target="#digital-collapse" aria-expanded="false" aria-controls="digital-collapse">
+                            <span class="collapse-text-show">Learn More <i class="fas fa-arrow-right ms-2"></i></span>
+                            <span  class="collapse-text-hide d-none">Show Less <i class="fas fa-arrow-up ms-2"></i></span>
+                        </button>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- Footer Section (Copied from index.html) -->
+    <section id="sec-6">
+        <div class="container">
+            <div class="about">
+                <h1>About Company</h1>
+                <h2>
+                    CONSTRUCTION 
+                    <p>Lorem ipsum dolor sit amit.</p>
+                </h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus eius nisi repudiandae ipsam pariatur, quos perspiciatis eaque officia rerum odio modi sed fugiat mollitia? Rerum, architecto obcaecati!</p>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>  
+                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#"><i class="fab fa-youtube-square"></i></a>
+            </div>
+            <div class="links">
+                <h1>Explor links</h1>
+                <a href="#">Our services</a>
+                <a href="#">Meet our team</a>
+                <a href="#">Forum</a>
+                <a href="#">Help center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Our terms</a>
+                <a href="#">Site map</a>
+            </div>
+            <div class="posts">
+                <h1>Latest posts</h1>
+                <a href="#"><span>20<br>AUG</span>Lorem ipsum dolor sit stiae tempora</a>
+                <a href="#"><span>20<br>AUG</span>Lorem ipsum dolor sit stiae tempora</a>
+                <a href="#"><span>20<br>AUG</span>Lorem ipsum dolor sit stiae tempora</a>
+                <a href="#"><span>20<br>AUG</span>Lorem ipsum dolor sit stiae tempora</a>
+                <a href="#"><span>20<br>AUG</span>Lorem ipsum dolor sit stiae tempora</a>
+            </div>
+            <div class="contact">
+                <h1>Contact us</h1>
+                <p>123 New Line, London UK</p>
+                <p>Hello@contact-us.com</p>
+                <p>+44 00 00 1234<br>+44 00 00 1234</p>
+            </div>
+        </div>
+    </section>
+    <section id="sec-7">
+        <div class="container">
+            <p>Copyright @2022 | Designed by <span>Web Technologies Team</span></p>
         </div>
     </section>
     

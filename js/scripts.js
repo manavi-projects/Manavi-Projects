@@ -85,3 +85,18 @@ search.addEventListener('click', function (){
          }
  } )
 
+// Toggle button text between "Learn More" and "Show Less"
+document.addEventListener('DOMContentLoaded', function() {
+    const collapseButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
+    
+    collapseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const showText = this.querySelector('.collapse-text-show');
+            const hideText = this.querySelector('.collapse-text-hide');
+            
+            showText.classList.toggle('d-none');
+            hideText.classList.toggle('d-none');
+        });
+    });
+});
+
