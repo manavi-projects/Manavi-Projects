@@ -1,5 +1,8 @@
+emailjs.init('tSDvu2_rm4WBRcirO');
+
+
 //function to validate user email address
-function criteria() { 
+function criteria() { // Replace with your EmailJS public key
     const form = document.getElementById('form');
     const validChars = ['.', '@', '_','-'];
     let email = document.getElementById('email').value;    
@@ -8,6 +11,7 @@ function criteria() {
     let lastAt = email.lastIndexOf('@');
     let lastDot = email.lastIndexOf('.');
     let firstChar = email.charAt(0);
+    let message = document.getElementById('messageToSend').value;
     
     let state = true;
     
@@ -54,13 +58,35 @@ function criteria() {
     }
 
     if (state == true) {
-        msg.innerHTML = 'Thank You :) Your Message has been submitted successfully. <br> You shall here form us very soon!';
-        document.getElementById('email').classList.remove("invalid")
+        sendEmail();
+        document.getElementById('email').classList.remove("invalid");
     }
     else {
         document.getElementById('email').classList.add("invalid")
     }   
-}    
+}
+
+
+function sendEmail() {
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('messageToSend').value;
+    const name = document.getElementById('NameToSend')
+
+    emailjs.send('service_whgxsdv', 'template_4h57fmz', {
+        to_email: email, // Hardcoded recipient
+        // from_email: 'mgkunwar999@gmail.com',
+        message: 'You have recieved a message from email : ' + email + ' ' + message + ' ' + ' And the name of client is : ' + name
+    })
+    .then((response) => {
+        // console.log('Email sent successfully!', response);
+        // alert('Email sent successfully!');
+        msg.innerHTML = 'Thank You :) Your Message has been submitted successfully. <br> You shall here form us very soon!';
+    }, (error) => {
+        // console.error('Failed to send email:', error);
+        // alert('Failed to send email.');
+        msg.innerHTML = 'Sorry :( Service is not availabe right now. <br> You should try again soon';
+    });
+}
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -97,6 +123,69 @@ document.addEventListener('DOMContentLoaded', function() {
             showText.classList.toggle('d-none');
             hideText.classList.toggle('d-none');
         });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const currentSlideNum = document.querySelector('.current');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        email
+        // Add active class to current slide and dot
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+
+        // Update slide counter
+        currentSlideNum.textContent = index + 1;
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Add click handlers to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+    });
+
+    // Add click handlers to arrows
+    prevButton.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
+
+    // Auto advance slides every 2 seconds
+    let slideInterval = setInterval(nextSlide, 4000);
+
+    // Pause auto-advance on hover
+    const sliderContainer = document.querySelector('.slider-container');
+    sliderContainer.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+
+    sliderContainer.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 3000);
     });
 });
 
