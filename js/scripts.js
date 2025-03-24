@@ -73,7 +73,7 @@ function sendEmail() {
     const name = document.getElementById('NameToSend')
 
     emailjs.send('service_whgxsdv', 'template_4h57fmz', {
-        to_email: email, // Hardcoded recipient
+        to_email: 'manish.singh.mails@gmail.com', // Hardcoded recipient
         // from_email: 'mgkunwar999@gmail.com',
         message: 'You have recieved a message from email : ' + email + ' ' + message + ' ' + ' And the name of client is : ' + name
     })
@@ -94,22 +94,22 @@ form.addEventListener("submit", (e) => {
 });
 
 //SEARCH
-const search = document.getElementById('search');
-const searchBar = document.getElementById('searchBar');
-//click on the Magnifier icon to toggle the search bar
-search.addEventListener('click', function (){
-    searchBar.classList.toggle('show')
-    searchBar.classList.toggle('hide')
-})
-//press escape to close the search bar
- document.addEventListener('keydown', (event) => {
-     var keyName = event.key;
-     console.log("keyName");
-     if ((keyName == 'Escape' && searchBar.classList.contains('show') == true)) {
-            searchBar.classList.toggle('show')
-            searchBar.classList.toggle('hide')    
-         }
- } )
+// const search = document.getElementById('search');
+// const searchBar = document.getElementById('searchBar');
+// //click on the Magnifier icon to toggle the search bar
+// search.addEventListener('click', function (){
+//     searchBar.classList.toggle('show')
+//     searchBar.classList.toggle('hide')
+// })
+// //press escape to close the search bar
+//  document.addEventListener('keydown', (event) => {
+//      var keyName = event.key;
+//      console.log("keyName");
+//      if ((keyName == 'Escape' && searchBar.classList.contains('show') == true)) {
+//             searchBar.classList.toggle('show')
+//             searchBar.classList.toggle('hide')    
+//          }
+//  } )
 
 // Toggle button text between "Learn More" and "Show Less"
 document.addEventListener('DOMContentLoaded', function() {
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     sliderContainer.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(nextSlide, 3000);
+        slideInterval = setInterval(nextSlide, 4000);
     });
 });
 
