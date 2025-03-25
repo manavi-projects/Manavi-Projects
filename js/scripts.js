@@ -187,5 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     sliderContainer.addEventListener('mouseleave', () => {
         slideInterval = setInterval(nextSlide, 3000);
     });
+
+    // Update the total number display
+    document.querySelector('.total').textContent = '3';
 });
 
