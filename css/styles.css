@@ -3,6 +3,8 @@
     padding: 0px;
     box-sizing: border-box;
     outline-style: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -26,14 +28,20 @@ html {
 }
 .container{
     width: 95%;
-    margin: 0px auto;
-    padding: 0px;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
 }
 /* SECTION ZERO = LANDING VIEW */
 #sec-0{
     background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(../Images/banner.jpg) no-repeat top center/cover;
 }
 #sec-0 header.top {
+    width: 100%;
+    min-height: 35px;
+    position: relative;
+    z-index: 100;
     background-color: var(--haccent);
     font-size: 0.85rem;
     color: var(--txtaccent4);
@@ -92,24 +100,29 @@ html {
     margin-top: -5px;
 }
 #sec-0 header:last-of-type{
-    background-color: var(--bgaccent);
+    width: 100%;
+    min-height: 60px;
     position: relative;
+    z-index: 99;
+    background-color: var(--bgaccent);
 }
 #sec-0 header:last-of-type .container{
+    min-height: 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0.65rem 0px;
-    position: relative;
+    padding: 10px 0;
 }
 #sec-0 header:last-of-type h1{
     font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 0;
+    padding: 5px 0;
+    flex-shrink: 0;
     font-style: italic;
     font-weight: bold;
     color: var(--haccent);
-    padding: 0px;
-    margin: 0px;
 }
 #sec-0 header:last-of-type h1>span{
     color: var(--txtaccent);
@@ -123,6 +136,11 @@ html {
 #sec-0 header label{
     color: var(--haccent);
     font-size: 2rem;
+}
+#sec-0 header nav {
+    display: none;
+    width: 100%;
+    background-color: var(--bgaccent_withOpacity);
 }
 #sec-0 header nav a {
     display: block;
@@ -585,8 +603,11 @@ text-shadow:1px 1px #73757E;
     padding-top: 2rem;
     padding-bottom: 4rem;
     font-size: 0.8rem;
+    width: 100%;
+    position: relative;
 }
 #sec-6 .container{
+    padding: 40px 0;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -712,6 +733,8 @@ text-shadow:1px 1px #73757E;
     padding: 20px 0px 10px;
     text-align: center;
     font-size: 0.7rem;
+    width: 100%;
+    position: relative;
 }
 #sec-7 p{
     color: var(--txtaccent5);
@@ -771,6 +794,11 @@ text-shadow:1px 1px #73757E;
     }
     #sec-0 header label{
         display: none;
+    }
+    #sec-0 header nav {
+        display: flex;
+        width: auto;
+        background-color: transparent;
     }
     #sec-0 header nav a {
         border-style: none;
@@ -867,8 +895,9 @@ text-shadow:1px 1px #73757E;
         bottom: 4px;
     }
     #sec-6 .container{
+        flex-wrap: wrap;
         justify-content: space-between;
-        row-gap: 25px;
+        gap: 20px;
     }
     #sec-6 .about{
         width: 65%;
@@ -987,8 +1016,9 @@ text-shadow:1px 1px #73757E;
         text-align: left;
     }
     #sec-6 .container{
+        flex-wrap: wrap;
         justify-content: space-between;
-        row-gap: 25px;
+        gap: 20px;
     }
     #sec-6 .about{
         width: 30%;
@@ -1482,4 +1512,131 @@ p {
     #mission-vision p {
         font-size: 1.1rem;
     }
+}
+
+/* Header and Footer Consistency Fixes */
+header.top {
+    width: 100%;
+    min-height: 35px;
+    position: relative;
+    z-index: 100;
+}
+
+header:last-of-type {
+    width: 100%;
+    min-height: 60px;
+    position: relative;
+    z-index: 99;
+}
+
+/* Force consistent header layout */
+#sec-0 header:last-of-type .container {
+    min-height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Ensure logo text stays consistent */
+#sec-0 header:last-of-type h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 0;
+    padding: 5px 0;
+    flex-shrink: 0;
+}
+
+/* Navigation consistency */
+#sec-0 header nav {
+    display: none;
+    width: 100%;
+    background-color: var(--bgaccent_withOpacity);
+}
+
+#sec-0 input:checked + nav {
+    display: block;
+}
+
+/* Footer consistency fixes */
+#sec-6, #sec-7 {
+    width: 100%;
+    position: relative;
+}
+
+#sec-6 .container {
+    padding: 40px 0;
+}
+
+#sec-7 .container {
+    padding: 15px 0;
+}
+
+/* Responsive fixes */
+@media (min-width: 768px) {
+    #sec-0 header nav {
+        display: flex;
+        width: auto;
+        background-color: transparent;
+    }
+
+    #sec-0 header:last-of-type .container {
+        padding: 0.65rem 0;
+    }
+
+    #sec-0 header nav a {
+        display: inline-block;
+        border: none;
+    }
+
+    #sec-6 .container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+}
+
+/* Force consistent spacing */
+.container {
+    width: 95%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+}
+
+/* Fix for mobile menu */
+@media (max-width: 767px) {
+    #sec-0 header label {
+        display: block;
+        cursor: pointer;
+    }
+
+    #sec-0 header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    #sec-0 header nav a {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+/* Force consistent font loading */
+@font-face {
+    font-display: swap;
+    font-family: 'Segoe UI';
+    src: local('Segoe UI');
+}
+
+/* Force hardware acceleration */
+header, footer, nav {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }

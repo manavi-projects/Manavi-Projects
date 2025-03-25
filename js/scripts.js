@@ -4,6 +4,8 @@ emailjs.init('tSDvu2_rm4WBRcirO');
 //function to validate user email address
 function criteria() { // Replace with your EmailJS public key
     const form = document.getElementById('form');
+    if (!form) return; // Guard clause for pages without the form
+
     const validChars = ['.', '@', '_','-'];
     let email = document.getElementById('email').value;    
     let msg = document.getElementById('msg');
@@ -88,10 +90,14 @@ function sendEmail() {
     });
 }
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    criteria();
-});
+// Form submission handler
+const form = document.getElementById('form');
+if (form) {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        criteria();
+    });
+}
 
 //SEARCH
 // const search = document.getElementById('search');
@@ -111,84 +117,136 @@ form.addEventListener("submit", (e) => {
 //          }
 //  } )
 
-// Toggle button text between "Learn More" and "Show Less"
+// Slider functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const collapseButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
-    
-    collapseButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const showText = this.querySelector('.collapse-text-show');
-            const hideText = this.querySelector('.collapse-text-hide');
-            
-            showText.classList.toggle('d-none');
-            hideText.classList.toggle('d-none');
-        });
-    });
-});
+    const sliderContainer = document.querySelector('.slider-container');
+    if (!sliderContainer) return; // Guard clause for pages without slider
 
-document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const prevButton = document.querySelector('.prev');
     const nextButton = document.querySelector('.next');
     const currentSlideNum = document.querySelector('.current');
     let currentSlide = 0;
+    let slideInterval;
 
     function showSlide(index) {
+        if (!slides.length) return; // Guard against empty slides
+        
         // Remove active class from all slides and dots
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
-        email
+        
         // Add active class to current slide and dot
         slides[index].classList.add('active');
         dots[index].classList.add('active');
 
-        // Update slide counter
-        currentSlideNum.textContent = index + 1;
+        // Update slide counter if it exists
+        if (currentSlideNum) {
+            currentSlideNum.textContent = index + 1;
+        }
     }
 
     function nextSlide() {
+        if (!slides.length) return;
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
 
     function prevSlide() {
+        if (!slides.length) return;
         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(currentSlide);
     }
 
-    // Add click handlers to dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentSlide = index;
-            showSlide(currentSlide);
+    // Initialize slider controls if they exist
+    if (dots.length) {
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+                resetSlideInterval();
+            });
         });
-    });
+    }
 
-    // Add click handlers to arrows
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
+    if (prevButton && nextButton) {
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            resetSlideInterval();
+        });
+        
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            resetSlideInterval();
+        });
+    }
 
-    // Add keyboard navigation
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prevSlide();
-        if (e.key === 'ArrowRight') nextSlide();
+        if (!sliderContainer) return;
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            resetSlideInterval();
+        }
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+            resetSlideInterval();
+        }
     });
 
-    // Auto advance slides every 2 seconds
-    let slideInterval = setInterval(nextSlide, 4000);
+    function startSlideInterval() {
+        slideInterval = setInterval(nextSlide, 4000);
+    }
+
+    function resetSlideInterval() {
+        clearInterval(slideInterval);
+        startSlideInterval();
+    }
+
+    // Initialize auto-advance
+    startSlideInterval();
 
     // Pause auto-advance on hover
-    const sliderContainer = document.querySelector('.slider-container');
-    sliderContainer.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
 
-    sliderContainer.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(nextSlide, 4000);
-    });
-
-    // Update the total number display
-    document.querySelector('.total').textContent = '3';
+        sliderContainer.addEventListener('mouseleave', () => {
+            startSlideInterval();
+        });
+    }
 });
+
+// Collapse button text toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const collapseButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
+    
+    collapseButtons.forEach(button => {
+        if (!button) return;
+        
+        button.addEventListener('click', function() {
+            const showText = this.querySelector('.collapse-text-show');
+            const hideText = this.querySelector('.collapse-text-hide');
+            
+            if (showText && hideText) {
+                showText.classList.toggle('d-none');
+                hideText.classList.toggle('d-none');
+            }
+        });
+    });
+});
+
+// Mobile menu handling
+const menuCheckbox = document.getElementById('menu');
+if (menuCheckbox) {
+    const navLinks = document.querySelectorAll('nav a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuCheckbox.checked = false;
+        });
+    });
+}
 
